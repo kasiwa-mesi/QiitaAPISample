@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct QiitaAccessTokenModel: Codable {
+  let clientId: String
+  let scopes: [String]
+  let token: String
+}
