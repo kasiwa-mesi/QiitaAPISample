@@ -9,11 +9,11 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
-  @IBOutlet private weak var loginButton: UIButton! {
-    didSet {
-      loginButton.addTarget(self, action: #selector(tapLoginButton), for: .touchUpInside)
+    @IBOutlet private weak var loginButton: UIButton! {
+        didSet {
+          loginButton.addTarget(self, action: #selector(tapLoginButton), for: .touchUpInside)
+        }
     }
-  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,5 +23,6 @@ final class LoginViewController: UIViewController {
 private extension LoginViewController {
   @objc func tapLoginButton() {
     print("QiitaのログインURLを開く")
+    UIApplication.shared.open(API.shared.oAuthURL, options: [:], completionHandler: nil)
   }
 }

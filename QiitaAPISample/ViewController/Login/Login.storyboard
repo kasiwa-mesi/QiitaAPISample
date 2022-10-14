@@ -29,6 +29,9 @@
                             <constraint firstItem="GqM-Vs-l5G" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Zde-hZ-AKZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="GqM-Vs-l5G" id="khR-pd-NAW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
