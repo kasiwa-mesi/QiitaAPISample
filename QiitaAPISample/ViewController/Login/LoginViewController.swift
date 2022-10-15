@@ -28,11 +28,12 @@ final class LoginViewController: UIViewController {
             return
         }
         API.shared.postAccessToken(code: code) { result in
-            print("アクセストークン取得")
             switch result {
             case .success(let accessToken):
                 UserDefaults.standard.qiitaAccessToken = accessToken.token
-                let vc = UIStoryboard.init(name: "Article", bundle: nil).instantiateInitialViewController()!
+                guard let vc = UIStoryboard.init(name: "Article", bundle: nil).instantiateInitialViewController() as? ArticleViewController else {
+                    fatalError()
+                  }
                 self.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 print(error)
@@ -44,7 +45,6 @@ final class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     @objc func tapLoginButton() {
-        print("QiitaのログインURLを開く")
         UIApplication.shared.open(API.shared.oAuthURL, options: [:], completionHandler: nil)
     }
 }

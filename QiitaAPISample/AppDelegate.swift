@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let loginViewController = UIStoryboard.init(name: "Login", bundle: nil).instantiateInitialViewController() as? LoginViewController else {
             fatalError()
         }
-        print("ログイン画面を構築")
         self.loginViewController = loginViewController
         let navigationController = UINavigationController(rootViewController: loginViewController)
         let window = UIWindow()
@@ -28,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let loginViewController = self.loginViewController else {
             return true
         }
-        print("Qiitaのログイン認証処理を呼び出す")
         loginViewController.openURL(url)
         return true
     }
