@@ -28,7 +28,7 @@ final class API {
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
-
+    
     enum URLParameterName: String {
         case clientID = "client_id"
         case clientSecret = "client_secret"
@@ -40,17 +40,17 @@ final class API {
     var oAuthURL: URL {
         let endPoint = "/oauth/authorize"
         return URL(string: host + endPoint + "?" +
-                    "\(URLParameterName.clientID.rawValue)=\(clientID)" + "&" +
-                    "\(URLParameterName.scope.rawValue)=read_qiita+write_qiita" + "&" +
-                    "\(URLParameterName.state.rawValue)=\(qiitState)")!
+                   "\(URLParameterName.clientID.rawValue)=\(clientID)" + "&" +
+                   "\(URLParameterName.scope.rawValue)=read_qiita+write_qiita" + "&" +
+                   "\(URLParameterName.state.rawValue)=\(qiitState)")!
     }
     
     func postAccessToken(code: String, completion: ((Result<QiitaAccessTokenModel, Error>) -> Void)? = nil) {
         let endPoint = "/access_tokens"
         guard let url = URL(string: host + endPoint + "?" +
-                                "\(URLParameterName.clientID.rawValue)=\(clientID)" + "&" +
-                                "\(URLParameterName.clientSecret.rawValue)=\(clientSecret)" + "&" +
-                                "\(URLParameterName.code)=\(code)") else {
+                            "\(URLParameterName.clientID.rawValue)=\(clientID)" + "&" +
+                            "\(URLParameterName.clientSecret.rawValue)=\(clientSecret)" + "&" +
+                            "\(URLParameterName.code)=\(code)") else {
             completion?(.failure(APIError.postAccessToken))
             return
         }
@@ -67,6 +67,35 @@ final class API {
                 completion?(.success(accessToken))
             } catch let error {
                 print("リクエスト失敗")
+                completion?(.failure(error))
+            }
+        }
+    }
+    
+    func getArticles(completion: ((Result<[QiitaArticleModel], Error>) -> Void)? = nil) {
+        let endPoint = "/authenticated_user/items"
+        guard let url = URL(string: host + endPoint),
+              !UserDefaults.standard.qiitaAccessToken.isEmpty else {
+            completion?(.failure(APIError.getArticles))
+            return
+        }
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(UserDefaults.standard.qiitaAccessToken)"
+        ]
+        let parameters = [
+            "page": 1,
+            "per_page": 20
+        ]
+        AF.request(url, method: .get, parameters: parameters, headers: headers).responseData { (response) in
+            do {
+                guard
+                    let _data = response.data else {
+                    completion?(.failure(APIError.getArticles))
+                    return
+                }
+                let items = try API.jsonDecoder.decode([QiitaArticleModel].self, from: _data)
+                completion?(.success(items))
+            } catch let error {
                 completion?(.failure(error))
             }
         }
