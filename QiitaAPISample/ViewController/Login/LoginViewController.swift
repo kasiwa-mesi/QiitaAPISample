@@ -32,8 +32,11 @@ final class LoginViewController: UIViewController {
             switch result {
             case .success(let accessToken):
                 UserDefaults.standard.qiitaAccessToken = accessToken.token
-                let vc = UIStoryboard.init(name: "Article", bundle: nil).instantiateInitialViewController()!
+                guard let vc = UIStoryboard.init(name: "Article", bundle: nil).instantiateInitialViewController() as? ArticleViewController else {
+                    fatalError()
+                  }
                 self.navigationController?.pushViewController(vc, animated: true)
+                print("Articleに遷移")
             case .failure(let error):
                 print(error)
             }

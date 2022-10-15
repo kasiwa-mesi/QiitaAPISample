@@ -52,8 +52,8 @@
 		2748ABC428F69E5C0079DDDA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2748ABC928F69EB30079DDDA /* Article */,
 				2748ABC628F69E7D0079DDDA /* Login */,
+				2748ABC928F69EB30079DDDA /* Article */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
