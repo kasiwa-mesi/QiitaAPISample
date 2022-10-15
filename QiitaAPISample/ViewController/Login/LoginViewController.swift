@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
               let getState = queryItems.first(where: {$0.name == "state"})?.value,
               getState == API.shared.qiitState
         else {
-          return
+            return
         }
         API.shared.postAccessToken(code: code) { result in
             print("アクセストークン取得")
@@ -37,7 +37,7 @@ final class LoginViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
-
+            
         }
     }
 }
