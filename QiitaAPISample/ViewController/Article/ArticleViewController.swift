@@ -23,7 +23,6 @@ final class ArticleViewController: UIViewController {
         API.shared.getArticles {[weak self] result in
             switch result {
             case .success(let articles):
-                print(articles)
                 self?.qiitaArticles = articles
                 self?.tableView.reloadData()
             case .failure(let error):
@@ -39,15 +38,12 @@ extension ArticleViewController: UITableViewDelegate {
               UIApplication.shared.canOpenURL(url) else {
             return
         }
-        print("URLカクニン")
-        print(url)
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 
 extension ArticleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("TABLEVIEWコスウ")
         return qiitaArticles.count
     }
     
@@ -57,8 +53,6 @@ extension ArticleViewController: UITableViewDataSource {
         }
         
         let article = qiitaArticles[indexPath.row]
-        print("Article確認")
-        print(article.title)
         cell.textLabel?.text = article.title
         
         return cell

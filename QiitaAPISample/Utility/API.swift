@@ -57,7 +57,6 @@ final class API {
         
         AF.request(url, method: .post).responseData { (response) in
             do {
-                print("リクエスト進行中")
                 guard
                     let _data = response.data else {
                     completion?(.failure(APIError.postAccessToken))
@@ -66,7 +65,6 @@ final class API {
                 let accessToken = try API.jsonDecoder.decode(QiitaAccessTokenModel.self, from: _data)
                 completion?(.success(accessToken))
             } catch let error {
-                print("リクエスト失敗")
                 completion?(.failure(error))
             }
         }
