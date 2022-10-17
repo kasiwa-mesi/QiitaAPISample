@@ -19,6 +19,8 @@
 		27576AF728F53DF100A98CE8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27576AF628F53DF100A98CE8 /* Alamofire */; };
 		2760766A28F7F0FE000157F6 /* QiitaArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760766928F7F0FE000157F6 /* QiitaArticleModel.swift */; };
 		2760766C28F7F116000157F6 /* QiitaAccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760766B28F7F116000157F6 /* QiitaAccessTokenModel.swift */; };
+		2790999728FD20AC002C8076 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2790999628FD20AC002C8076 /* OfflineViewController.swift */; };
+		2790999928FD20BD002C8076 /* Offline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2790999828FD20BD002C8076 /* Offline.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		27576AEF28F539AE00A98CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2760766928F7F0FE000157F6 /* QiitaArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleModel.swift; sourceTree = "<group>"; };
 		2760766B28F7F116000157F6 /* QiitaAccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaAccessTokenModel.swift; sourceTree = "<group>"; };
+		2790999628FD20AC002C8076 /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
+		2790999828FD20BD002C8076 /* Offline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Offline.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		2748ABC428F69E5C0079DDDA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2790999328FD2080002C8076 /* Offline */,
 				2748ABC628F69E7D0079DDDA /* Login */,
 				2748ABC928F69EB30079DDDA /* Article */,
 			);
@@ -132,6 +137,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		2790999328FD2080002C8076 /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+				2790999628FD20AC002C8076 /* OfflineViewController.swift */,
+				2790999828FD20BD002C8076 /* Offline.storyboard */,
+			);
+			path = Offline;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2748ABCF28F69EE60079DDDA /* Login.storyboard in Resources */,
+				2790999928FD20BD002C8076 /* Offline.storyboard in Resources */,
 				27576AEE28F539AE00A98CE8 /* LaunchScreen.storyboard in Resources */,
 				2748ABCD28F69EDA0079DDDA /* Article.storyboard in Resources */,
 				27576AEB28F539AE00A98CE8 /* Assets.xcassets in Resources */,
@@ -210,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2790999728FD20AC002C8076 /* OfflineViewController.swift in Sources */,
 				2760766C28F7F116000157F6 /* QiitaAccessTokenModel.swift in Sources */,
 				2748ABC828F69E8B0079DDDA /* LoginViewController.swift in Sources */,
 				2753522328F93FEC005DB57A /* UserDefaults+.swift in Sources */,
